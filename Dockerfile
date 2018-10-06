@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM arm32v7/node:8.12.0-stretch
 MAINTAINER Josh Cox <josh 'at' webhosting.coop>
 
 ENV MKDOMOTICZ_UPDATED=20180921
@@ -16,9 +16,12 @@ RUN apt-get update && apt-get install -y \
 	libusb-0.1-4 libusb-dev \
 	zlib1g-dev \
 	libudev-dev \
+	python 3.6 \
 	python3-dev python3-pip \
-        fail2ban && \
-    # linux-headers-generic
+        fail2ban \
+        iputils-ping && \
+
+pip3 install python-miio && \
 
 ## OpenZwave installation
 # grep git version of openzwave
@@ -59,6 +62,8 @@ apt-get remove -y git cmake linux-headers-amd64 build-essential libssl-dev libbo
 VOLUME /config
 
 EXPOSE 8080
+
+RUN pip3 install netifaces
 
 COPY start.sh /start.sh
 

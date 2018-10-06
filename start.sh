@@ -1,6 +1,8 @@
 #!/bin/bash
 if [ -z ${TZ+x} ]; then export TZ=America/Chicago; fi
 rm /etc/localtime
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 cd /etc; ln -s /usr/share/zoneinfo/$TZ localtime
 if [ ! -z ${DOMOTICZ_OPTS+x} ]
   then
