@@ -1,7 +1,7 @@
 FROM arm32v7/node:8.12.0-stretch
 MAINTAINER Josh Cox <josh 'at' webhosting.coop>
 
-ENV MKDOMOTICZ_UPDATED=20180921
+ENV MKDOMOTICZ_UPDATED=20181005
 
 ARG DOMOTICZ_VERSION="master"
 
